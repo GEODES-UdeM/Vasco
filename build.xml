@@ -34,8 +34,9 @@
     <!-- Compile sources -->
     <javac destdir="${bin}" srcdir="${src}" includeAntRuntime="false">
       <classpath>
-        <fileset dir="lib">
+        <fileset dir="${lib}">
           <include name="**/*.jar"/>
+          <exclude name="ant/**/*.jar"/>
         </fileset>
       </classpath>
     </javac>
@@ -46,9 +47,9 @@
     </copy>
   </target>
 
-  <target name="dist"
+  <target name="dist-all"
         depends="-fail-if-no-bin"
-        description="generate the distribution" >
+        description="Generate the a runnable jar that works on all platforms" >
     <mkdir dir="${dist}"/>
 
     <fileset id="jogl_jars" dir="${lib}/jogl2/jar" includes="*.jar"/>
@@ -72,6 +73,7 @@
 
       <!-- Project ressources -->
       <fileset dir="${bin}"/>
+      <filelist dir="." files="README.md"/>
 
       <!-- Regular libraries -->
       <zipfileset src="${lib}/iceberg.jar"/>
@@ -82,5 +84,35 @@
     </jar>
 
     <delete file="${dist}/jars"/>
+  </target>
+  
+  <target name="dist-mac"
+        depends="-fail-if-no-bin"
+        description="Generate a MacOS application" >
+    <taskdef name="jarbundler" 
+        classname="net.sourceforge.jarbundler.JarBundler"
+        classpath="${lib}/ant/jarbundler-2.2.0.jar" />
+           
+    <mkdir dir="${dist}"/>
+    
+    <!-- Build the vasco jar (no libs) -->
+    <jar jarfile="${dist}/vasco.jar" basedir="${bin}"/>
+    
+    <!-- Build the MacOS app -->
+    <jarbundler dir="${dist}"
+                name="Vasco"
+                mainclass="vasco.Main" 
+                version="0.1.0"
+                jvmversion="1.6+">
+      <jarfileset dir="${dist}">
+          <include name="vasco.jar" />
+      </jarfileset>
+      <jarfileset dir="${lib}">
+        <include name="*.jar" />
+        <include name="jogl2/jar/*.jar" />
+      </jarfileset>
+    </jarbundler>
+    
+    <delete file="${dist}/vasco.jar"/>
   </target>
 </project>
