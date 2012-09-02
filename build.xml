@@ -1,0 +1,86 @@
+<project name="Vasco" default="deploy" basedir=".">
+    <description>
+        Vasco - A Visual Churn Exploration Tool
+    </description>
+
+  <!-- Global properties -->
+  <property name="src"   location="src"/>
+  <property name="bin"   location="bin"/>
+  <property name="res"   location="res"/>
+  <property name="lib"   location="lib"/>
+  <property name="dist"  location="dist"/>
+
+
+  <!-- Utility targets -->
+
+  <target name="clean"
+        description="Clean up actions">
+    <delete dir="${dist}"/>
+  </target>
+  
+  <target name="-check-bin-exists" unless="bin.exists">
+      <available property="bin.exists" file="${bin}" type="dir"/>
+  </target>
+  
+  <target name="-fail-if-no-bin" depends="-check-bin-exists" unless="${bin.exists}">
+      <fail message="${bin} not found, please run 'ant compile' first."/>
+  </target>
+
+  <!-- Deployment targets -->
+
+  <target name="compile" >
+    <mkdir dir="${bin}"/>
+
+    <!-- Compile sources -->
+    <javac destdir="${bin}" srcdir="${src}" includeAntRuntime="false">
+      <classpath>
+        <fileset dir="lib">
+          <include name="**/*.jar"/>
+        </fileset>
+      </classpath>
+    </javac>
+
+    <!-- Compile resources -->
+    <copy todir="${bin}">
+      <fileset dir="res"/>
+    </copy>
+  </target>
+
+  <target name="dist"
+        depends="-fail-if-no-bin"
+        description="generate the distribution" >
+    <mkdir dir="${dist}"/>
+
+    <fileset id="jogl_jars" dir="${lib}/jogl2/jar" includes="*.jar"/>
+
+    <!-- Generate the list of jars -->
+    <pathconvert pathsep="${line.separator}" property="jogl_jar_list" refid="jogl_jars">
+        <mapper type="flatten"/>
+    </pathconvert>
+    <echo file="${dist}/jars" message="${jogl_jar_list}"/>
+
+    <!-- Build the jar -->
+    <jar jarfile="${dist}/vasco-all.jar">
+      <metainf dir="${dist}" includes="jars"/>
+
+      <manifest>
+        <attribute name="Main-Class"
+                  value="vasco.JarDriver"/>
+        <attribute name="Built-By"
+                  value="${user.name}"/>
+      </manifest>
+
+      <!-- Project ressources -->
+      <fileset dir="${bin}"/>
+
+      <!-- Regular libraries -->
+      <zipfileset src="${lib}/iceberg.jar"/>
+      <zipfileset src="${lib}/elude.graphs.jar"/>
+
+      <!-- JOGL 2 jars (must be extracted at runtime) -->
+      <zipfileset dir="${lib}/jogl2/jar" includes="**/*.jar" prefix="jars"/>
+    </jar>
+
+    <delete file="${dist}/jars"/>
+  </target>
+</project>
