@@ -18,6 +18,7 @@
 
   <body>
     <!-- Header -->
+    <!--
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -32,13 +33,14 @@
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#dowload">Download</a></li>
             </ul>
-          </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
-    </div> 
+    </div>
+    -->
     
     <!-- Fork me on github banner -->
-    <a href="http://github.com/GEODES-UdeM/Vasco"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <a href="http://github.com/GEODES-UdeM/Vasco"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
 
     <!-- Main content -->
@@ -69,6 +71,46 @@
       <p>Optionally, you can specify the name of an input file to open on the command line.</p>
       
       <p>The source code is available from the <a href="http://github.com/GEODES-UdeM/Vasco">GitHub project page</a> under the Modified BSD License.
+      
+      <h2 name="data">Sample data</h2>
+      
+      <p>Vasco supports two formats as input: a simple textual call graph format, and a bundle format that includes connection graphs.</p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Benchmark</th>
+            <th>Callgraph only</th>
+            <th>Bundle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Trade Direct-Standard</td>
+            <td><a href="files/data/trade-direct-std.acct">Download</a></td>
+            <td><a href="files/data/trade-direct-std.viz">Download</a></td>
+          </tr>
+          <tr>
+            <td>Trade Direct-WebServices</td>
+            <td><a href="files/data/trade-direct-ws.acct">Download</a></td>
+            <td><a href="files/data/trade-direct-ws.viz">Download</a></td>
+          </tr>
+          <tr>
+            <td>Trade EJB-Standard</td>
+            <td><a href="files/data/trade-ejb-std.acct">Download</a></td>
+            <td><a href="files/data/trade-ejb-std.viz">Download</a></td>
+          </tr>
+          <tr>
+            <td>Trade EJB-WebServices</td>
+            <td><a href="files/data/trade-ejb-ws.acct">Download</a></td>
+            <td><a href="files/data/trade-ejb-ws.viz">Download</a></td>
+          </tr>
+          <tr>
+            <td>Jazz</td>
+            <td><a href="files/data/jazz.acct">Download</a></td>
+            <td><a href="files/data/jazz.viz">Download</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     
     <script src="js/bootstrap.min.js"></script>
