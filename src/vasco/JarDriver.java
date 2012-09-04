@@ -82,7 +82,7 @@ public class JarDriver {
         URL[] extractedJarURLs = extractJars(extractedJarDir, jars, classLoader);
 
         VascoClassLoader vascoLoader = new VascoClassLoader(extractedJarURLs, classLoader);
-        vascoLoader.main("vasco.Main");
+        vascoLoader.main("vasco.Main", args);
     }
 
     private static Collection<String> loadJarList(ClassLoader classLoader) throws IOException {
