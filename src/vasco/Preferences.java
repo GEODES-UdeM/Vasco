@@ -104,7 +104,7 @@ public class Preferences {
         DEFAULTS.setColorProperty("groupColor", "#D9D9D9"); //$NON-NLS-1$ //$NON-NLS-2$
         DEFAULTS.setColorProperty("hoverColor", "#EEEEED"); //$NON-NLS-1$ //$NON-NLS-2$
         DEFAULTS.setColorProperty("contextHighlightColor", "#646464"); //$NON-NLS-1$ //$NON-NLS-2$
-        DEFAULTS.setColorProperty("contextBaseColor", "#e7e7e7"); //$NON-NLS-1$ //$NON-NLS-2$
+        DEFAULTS.setColorProperty("contextBaseColor", "#e1e1e1"); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     private Scene scene;
