@@ -74,11 +74,10 @@ public class ColorSelectionDialog extends JFrame {
      * Constructeur de la classe FenetreChoixCoul
      *
      * @param scene
-     * @param canvas
      * @param colorSettingPanel
      * @param colorID
      */
-    public ColorSelectionDialog(Scene scene, Canvas canvas, ColorSettingPanel colorSettingPanel, int colorID) {
+    public ColorSelectionDialog(Scene scene, ColorSettingPanel colorSettingPanel, int colorID) {
         super();
         this.colorSettingPanel = colorSettingPanel;
         this.colorID = colorID;

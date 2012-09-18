@@ -121,6 +121,11 @@ public class InfoPanel extends JPanel implements MouseListener, MouseMotionListe
             public void onMaxColorValueChanged(Scene scene, int value) {
                 repaint();
             }
+
+            @Override
+            public void onMetricColorsModified(Scene scene, Metric metric) {
+                if (metric == scene.getColorMetric()) repaint();
+            }
         });
     }
 

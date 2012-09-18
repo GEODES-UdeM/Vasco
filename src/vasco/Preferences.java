@@ -201,10 +201,12 @@ public class Preferences {
 
     public void setMinColor(Metric metric, Color color) {
         minColors.put(metric.getClass(), color);
+        scene.notifyMetricColorsChanged(metric);
     }
 
     public void setMaxColor(Metric metric, Color color) {
         maxColors.put(metric.getClass(), color);
+        scene.notifyMetricColorsChanged(metric);
     }
 
     public void loadFromFile(String filename) {

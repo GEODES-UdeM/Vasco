@@ -59,6 +59,11 @@ public class SceneAdapter implements SceneListener {
     }
 
     @Override
+    public void onMetricColorsModified(Scene scene, Metric metric) {
+        // empty
+    }
+
+    @Override
     public void onMaxColorValueChanged(Scene scene, int value) {
         // empty
     }

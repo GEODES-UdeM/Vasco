@@ -51,4 +51,5 @@ public interface SceneListener {
     public void onAngleMetricChanged(Scene scene, Metric angleMetric);
     public void onMaxColorValueChanged(Scene scene, int value);
     public void onModelChanged(Scene scene, CGModel model);
+    public void onMetricColorsModified(Scene scene, Metric metric);
 }

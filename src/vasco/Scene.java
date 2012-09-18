@@ -164,6 +164,12 @@ public class Scene {
         }
     }
 
+    /*default*/ void notifyMetricColorsChanged(Metric metric) {
+        for (SceneListener listener: listeners) {
+            listener.onMetricColorsModified(this, metric);
+        }
+    }
+
     public int getMaxColorValue() {
         return maxColorValue;
     }

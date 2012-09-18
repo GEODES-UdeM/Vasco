@@ -85,7 +85,6 @@ import vasco.util.Strings;
 public class ColorSettingDialog extends JFrame {
 
     private static final long serialVersionUID = 1L;
-    private Canvas canvas;
     private ColorSettingPanel colorSettingPanel;
     private Scene scene;
 
@@ -93,16 +92,14 @@ public class ColorSettingDialog extends JFrame {
      * Constructeur de la classe FenetreParamCoul
      *
      * @param scene
-     * @param canvas
      */
-    public ColorSettingDialog(Scene scene, Canvas canvas) {
+    public ColorSettingDialog(Scene scene) {
         super();
         this.scene = scene;
 
-        this.canvas = canvas;
         this.setPreferredSize(new Dimension(500, 300));
 
-        colorSettingPanel = new ColorSettingPanel(scene, canvas);
+        colorSettingPanel = new ColorSettingPanel(scene);
         this.add(colorSettingPanel);
 
         JPanel okPanel = new JPanel();
@@ -117,7 +114,7 @@ public class ColorSettingDialog extends JFrame {
                 Metric colorMetric = scene.getColorMetric();
                 scene.getPreferences().setMinColor(colorMetric, colorSettingPanel.getMinColor());
                 scene.getPreferences().setMaxColor(colorMetric, colorSettingPanel.getMaxColor());
-                ColorSettingDialog.this.canvas.display();  // FIXME: move to listener
+                ColorSettingDialog.this.setVisible(false);
                 ColorSettingDialog.this.dispose();
             }
         });

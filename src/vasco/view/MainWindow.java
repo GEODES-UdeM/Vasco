@@ -170,7 +170,6 @@ public class MainWindow extends JFrame {
         createContextPanels();
         createMenuBar();
 
-
         canvas.addListener(new CanvasListener() {
             @Override
             public void onElementInspected(Canvas canvas, Element element) {
@@ -374,7 +373,7 @@ public class MainWindow extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ColorSettingDialog f = new ColorSettingDialog(scene, canvas);
+                ColorSettingDialog f = new ColorSettingDialog(scene);
                 f.setVisible(true);
             }
         });

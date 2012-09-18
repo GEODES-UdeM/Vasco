@@ -180,6 +180,11 @@ public class Canvas extends GLCanvas implements Viewport, KeyListener, MouseList
             }
 
             @Override
+            public void onMetricColorsModified(Scene scene, Metric metric) {
+                if (metric == scene.getColorMetric()) display();
+            }
+
+            @Override
             public void onAngleMetricChanged(Scene scene, Metric angleMetric) {
                 if (layout != null) {
                     layout.layout();

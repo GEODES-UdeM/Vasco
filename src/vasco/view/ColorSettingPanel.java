@@ -76,14 +76,12 @@ public class ColorSettingPanel extends JPanel implements MouseListener {
     private static final long serialVersionUID = 2456222943747425952L;
 
     private Scene scene;
-    private Canvas canvas;
     private Color minColor;
     private Color maxColor;
 
-    public ColorSettingPanel(Scene scene, Canvas canvas) {
+    public ColorSettingPanel(Scene scene) {
         addMouseListener(this);
         this.scene = scene;
-        this.canvas = canvas;
         this.minColor = scene.getPreferences().getMinColor(scene.getColorMetric());
         this.maxColor = scene.getPreferences().getMaxColor(scene.getColorMetric());
     }
@@ -106,10 +104,10 @@ public class ColorSettingPanel extends JPanel implements MouseListener {
         int y = e.getY();
 
         if (x <= 200 && x >= 150 && y <= 50 && y >= 25) {
-            ColorSelectionDialog colorSelectionDialog = new ColorSelectionDialog(scene, canvas, this, 1);
+            ColorSelectionDialog colorSelectionDialog = new ColorSelectionDialog(scene, this, 1);
             colorSelectionDialog.setVisible(true);
         } else if (x <= 200 && x >= 150 && y <= 90 && y >= 65) {
-            ColorSelectionDialog colorSelectionDialog = new ColorSelectionDialog(scene, canvas, this, 2);
+            ColorSelectionDialog colorSelectionDialog = new ColorSelectionDialog(scene, this, 2);
             colorSelectionDialog.setVisible(true);
         }
     }
