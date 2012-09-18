@@ -55,7 +55,7 @@ import vasco.util.Strings;
  */
 public class Captures extends AbstractMetric {
     public Captures() {
-        super(new Color(255,255,128), new Color(0,94,0));
+        super(new Color(255,227,117), new Color(1,110,33));
     }
 
     @Override

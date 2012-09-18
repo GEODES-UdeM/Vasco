@@ -59,7 +59,7 @@ import elude.graphs.cg.attrs.CapturedBy;
  */
 public class Churn extends AbstractMetric {
     public Churn() {
-        super(new Color(1, 1, 0.5f), new Color(0, 0.37f, 0));
+        super(new Color(0,153,255), new Color(255,0,0));
     }
 
     @Override

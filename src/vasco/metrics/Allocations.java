@@ -55,7 +55,7 @@ import vasco.util.Strings;
  */
 public class Allocations extends AbstractMetric {
     public Allocations() {
-        super(new Color(0,153,255), new Color(255, 0, 0));
+        super(new Color(0,153,255), new Color(255,0,0));
     }
 
     @Override
